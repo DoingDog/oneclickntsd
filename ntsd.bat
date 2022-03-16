@@ -10,7 +10,7 @@ echo will all be killed
 set /p p=input keywords :
 if %p%==exit exit 0
 taskkill /f /im ntsd.exe
-tasklist /fo table /nh|findstr %p%>temp
+tasklist /fo table /nh|findstr /i /r %p%>temp
 for /f "tokens=2 delims= " %%i in (temp) do start /b /i ntsd -c q -p %%i
 echo ^@echo off>temp2.cmd
 echo echo Finished>>temp2.cmd
